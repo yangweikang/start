@@ -14,26 +14,41 @@
             1.上下外边距合并？
             2.display：none;block;inline;inline-block;
 
-        标准盒模型、怪异盒模型
+            标准盒模型、怪异盒模型
 
-            标准盒模型是什么？
-                标准盒模型是：width/height——>contentWidth/contentHeight；
-                怪异盒模型是：width/height——>contentWidth+borderWidth+paddingWidth/contentHeight+borderHeight+paddingHeight;
+                为什么存在以上两种盒模型？
+                    1.doctype都是标准的文档类型，无论我们使用哪种模式都会触发标准模式，而如果doctype缺失，则在ie6、ie7、ie8将会触发怪异模式(quirks);
+                    2.页面设置了恰当的DTD(文档定义类型),大多数浏览器都会按照标准盒模型来呈现内容，但是ie5和ie6的呈现却是不正确的;
 
-            1.doctype都是标准的文档类型，无论我们使用哪种模式都会触发标准模式，而如果doctype缺失，则在ie6、ie7、ie8将会触发怪异模式(quirks);
-            2.页面设置了恰当的DTD(文档定义类型),大多数浏览器都会按照标准盒模型来呈现内容，但是ie5和ie6的呈现却是不正确的;
+                以上两种盒模型差异是什么？
+                    标准盒模型是：width/height——>contentWidth/contentHeight；
+                    怪异盒模型是：width/height——>contentWidth+borderWidth+paddingWidth/contentHeight+borderHeight+paddingHeight;
 
+                以上两种盒模型，衍生物？
+                    CSS3属性:box-sizing : content-box || border-box || inherit;
+                        当为content-box时，将采取标准模式进行解析计算
+                        当为border-box时，将采取怪异模式解析计算
+                        当为inherit时，将从父元素来继承box-sizing属性的值
+
+            
     */
 
         .content-box {
             border: #000 solid 1px;
             padding: 20px;
             margin: 50px;
-            background: gold;
-            display: inline-block;
+            background: gold; 
 
         }
-        .content-box-noborder{
+        .content-box .box-sizing {
+            width: 100%;
+            border: #000 solid 20px;
+            padding:0px 50px;
+        }
+        .content-box .box-border{
+          box-sizing: border-box;
+        }
+        .content-box-noborder {
             background:rebeccapurple; 
             border: red solid 1px;
             margin: 50px;
@@ -47,8 +62,18 @@
         content-box
     </div>
     <div class="content-box">
-        content-box
+        content-box标准盒模型
+        <div class="box-sizing">
+                box-sizing def content-box
+        </div>
     </div>
+
+    <div class="content-box">
+            content-box怪异盒模型
+            <div class="box-sizing box-border">
+                box-sizing  border-box
+            </div>
+        </div>
 
     <div class="content-box-noborder">
         content-box-noborder
