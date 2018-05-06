@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=deviceWidth, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./normalize.css">
+    <style>
+        /* 
+
+        盒模型 
+            1.上下外边距合并？
+            2.display：none;block;inline;inline-block;
+
+        标准盒模型、怪异盒模型
+
+            标准盒模型是什么？
+                标准盒模型是：width/height——>contentWidth/contentHeight；
+                怪异盒模型是：width/height——>contentWidth+borderWidth+paddingWidth/contentHeight+borderHeight+paddingHeight;
+
+            1.doctype都是标准的文档类型，无论我们使用哪种模式都会触发标准模式，而如果doctype缺失，则在ie6、ie7、ie8将会触发怪异模式(quirks);
+            2.页面设置了恰当的DTD(文档定义类型),大多数浏览器都会按照标准盒模型来呈现内容，但是ie5和ie6的呈现却是不正确的;
+
+    */
+
+        .content-box {
+            border: #000 solid 1px;
+            padding: 20px;
+            margin: 50px;
+            background: gold;
+            display: inline-block;
+
+        }
+        .content-box-noborder{
+            background:rebeccapurple; 
+            border: red solid 1px;
+            margin: 50px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-box">
+        content-box
+    </div>
+    <div class="content-box">
+        content-box
+    </div>
+
+    <div class="content-box-noborder">
+        content-box-noborder
+    </div>
+    <div class="content-box-noborder">
+        content-box-noborder
+    </div>
+
+</body>
+
+</html>
